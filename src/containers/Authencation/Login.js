@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
 
 import * as actions from '../../store/actions';
-
+import { userLoginSuccess } from '../../store/actions';
 import './Login.scss';
+import { handleLogin } from '../../services/userService';
 import { FormattedMessage } from 'react-intl';
 
 class Login extends Component {
@@ -15,6 +16,7 @@ class Login extends Component {
             username: '',
             password: '',
             isShowPassword: false,
+            errMsg: '',
         };
     }
 
@@ -30,8 +32,30 @@ class Login extends Component {
         });
     };
 
-    handleSubmitValue = () => {
-        console.log('check data: ', this.state);
+    handleSubmitValue = async () => {
+        this.setState({
+            errMsg: '',
+        });
+        try {
+            let data = await handleLogin(this.state.username, this.state.password);
+            if (data && data.errCode !== 0) {
+                this.setState({
+                    errMsg: data.message,
+                });
+            }
+            if (data && data.errCode === 0) {
+                this.props.userLoginSuccess(data.user);
+                console.log('Login success!');
+            }
+        } catch (error) {
+            if (error.response) {
+                if (error.response.data) {
+                    this.setState({
+                        errMsg: error.response.data.message,
+                    });
+                }
+            }
+        }
     };
 
     handleShowHidePassword = () => {
@@ -41,7 +65,7 @@ class Login extends Component {
     };
 
     render() {
-        let { username, password, isShowPassword } = this.state;
+        let { username, password, isShowPassword, errMsg } = this.state;
         return (
             <div className="login-background">
                 <div className="login-container">
@@ -72,7 +96,9 @@ class Login extends Component {
                                 </span>
                             </div>
                         </div>
-
+                        <div className="col-12" style={{ color: 'red' }}>
+                            {errMsg}
+                        </div>
                         <div className="col-12 mt-3">
                             <button className="btn-login" onClick={() => this.handleSubmitValue()}>
                                 Login
@@ -105,8 +131,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         navigate: (path) => dispatch(push(path)),
-        adminLoginSuccess: (adminInfo) => dispatch(actions.adminLoginSuccess(adminInfo)),
-        adminLoginFail: () => dispatch(actions.adminLoginFail()),
+        // adminLoginSuccess: (adminInfo) => dispatch(actions.adminLoginSuccess(adminInfo)),
+        // userLoginFail: () => dispatch(actions.adminLoginFail()),
+        userLoginSuccess: (userInfo) => dispatch(actions.userLoginSuccess(userInfo)),
     };
 };
 
