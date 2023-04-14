@@ -3,7 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 
 import './UserManager.scss';
-import { getAllUsers } from '../../services/userService';
+import { getAllUsers, createNewUserService } from '../../services/userService';
 import ModalUser from './ModalUser';
 
 class UserManage extends Component {
@@ -22,13 +22,17 @@ class UserManage extends Component {
      */
 
     async componentDidMount() {
+        this.getAllUserFromReact();
+    }
+
+    getAllUserFromReact = async () => {
         let response = await getAllUsers('ALL');
         if (response && response.errCode === 0) {
             this.setState({
                 arrUsers: response.users,
             });
         }
-    }
+    };
 
     handleAddNewUser = () => {
         this.setState({
@@ -41,6 +45,23 @@ class UserManage extends Component {
             isOpenModalUser: !this.state.isOpenModalUser,
         });
     };
+
+    createNewUser = async (data) => {
+        try {
+            let response = await createNewUserService(data);
+            if (response && response.errCode !== 0) {
+                alert(response.message);
+            } else {
+                await this.getAllUserFromReact();
+                this.setState({
+                    isOpenModalUser: false,
+                });
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     render() {
         let arrUsers = this.state.arrUsers;
         return (
@@ -51,7 +72,11 @@ class UserManage extends Component {
                         <i className="fas fa-plus"></i> Add new users
                     </button>
                 </div>
-                <ModalUser isOpen={this.state.isOpenModalUser} toggleFromParent={this.toggleUserModal} />
+                <ModalUser
+                    isOpen={this.state.isOpenModalUser}
+                    toggleFromParent={this.toggleUserModal}
+                    createNewUser={this.createNewUser}
+                />
                 <div className="user-table mt-4 mx-1">
                     <table id="customers">
                         <thead>
