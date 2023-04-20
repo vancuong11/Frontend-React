@@ -131,7 +131,6 @@ class ModalEditUser extends Component {
                         </Button>
                     </ModalFooter>
                 </Modal>
-                ;
             </>
         );
     }

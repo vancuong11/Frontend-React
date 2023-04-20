@@ -129,7 +129,6 @@ class ModalUser extends Component {
                         </Button>
                     </ModalFooter>
                 </Modal>
-                ;
             </>
         );
     }

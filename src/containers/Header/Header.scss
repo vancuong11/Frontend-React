@@ -1,4 +1,4 @@
-@import "../../styles/common.scss";
+@import '../../styles/common.scss';
 
 .header-container {
     z-index: 99;
@@ -8,6 +8,33 @@
     color: $common-text-color;
     height: 40px;
     position: relative;
+
+    .languages {
+        .welcome {
+            margin-right: 10px;
+        }
+
+        .language-en {
+            margin: 0 15px 0 5px;
+            cursor: pointer;
+            opacity: 0.8;
+            &.active {
+                opacity: 1;
+                color: #30d663;
+            }
+        }
+
+        .language-vi {
+            cursor: pointer;
+            opacity: 0.8;
+
+            &.active {
+                opacity: 1;
+                color: #30d663;
+            }
+        }
+    }
+
     .btn-logout {
         color: $common-text-color;
         line-height: 40px;
