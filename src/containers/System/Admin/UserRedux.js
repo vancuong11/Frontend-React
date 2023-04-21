@@ -28,9 +28,17 @@ class UserRedux extends Component {
         // }
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.genderRedux !== this.props.genderRedux) {
+            this.setState({
+                genderArr: this.props.genderRedux,
+            });
+        }
+    }
+
     render() {
-        // let genders = this.state.genderArr;
-        let { language, genderRedux } = this.props;
+        let genders = this.state.genderArr;
+        let { language } = this.props;
         return (
             <>
                 <div className="user-redux-container">
@@ -82,9 +90,9 @@ class UserRedux extends Component {
                                         <FormattedMessage id="manage-user.gender" />
                                     </label>
                                     <select className="form-control">
-                                        {genderRedux &&
-                                            genderRedux.length > 0 &&
-                                            genderRedux.map((item, index) => {
+                                        {genders &&
+                                            genders.length > 0 &&
+                                            genders.map((item, index) => {
                                                 return (
                                                     <option key={index}>
                                                         {language === LANGUAGES.VI ? item.valueVi : item.valueEn}
