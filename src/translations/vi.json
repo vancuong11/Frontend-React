@@ -51,6 +51,12 @@
         "role": "Vai trò",
         "image": "Ảnh đại diện",
         "save": "Lưu",
-        "edit": "Lưu thay đổi"
+        "edit": "Lưu thay đổi",
+        "reset": "Làm mới"
+    },
+    "home-page" : {
+        "outstanding-doctor": "Bác sĩ nổi bật tuần qua",
+        "more-info": "Xem Thêm"
     }
+
 }

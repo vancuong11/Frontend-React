@@ -101,6 +101,27 @@ class UserRedux extends Component {
         }
     }
 
+    handleResetInput = () => {
+        let arrGenders = this.props.genderRedux;
+        let arrPosition = this.props.positionRedux;
+        let arrRole = this.props.roleRedux;
+
+        this.setState({
+            email: '',
+            password: '',
+            firstName: '',
+            lastName: '',
+            phoneNumber: '',
+            address: '',
+            gender: arrGenders && arrGenders.length > 0 ? arrGenders[0].keyMap : '',
+            position: arrPosition && arrPosition.length > 0 ? arrPosition[0].keyMap : '',
+            role: arrRole && arrRole.length > 0 ? arrRole[0].keyMap : '',
+            avatar: '',
+            action: CRUD_ACTIONS.CREATE,
+            previewImgURL: '',
+        });
+    };
+
     handleOnChangeImage = async (event) => {
         let data = event.target.files;
         let file = data[0];
@@ -387,6 +408,9 @@ class UserRedux extends Component {
                                         ) : (
                                             <FormattedMessage id="manage-user.save" />
                                         )}
+                                    </button>
+                                    <button className="btn btn-primary mx-4" onClick={() => this.handleResetInput()}>
+                                        <FormattedMessage id="manage-user.reset" />
                                     </button>
                                 </div>
 
