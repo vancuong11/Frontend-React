@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Slider from 'react-slick';
 import { FormattedMessage } from 'react-intl';
+import { withRouter } from 'react-router';
 
 import * as action from '../../../store/actions';
 import { LANGUAGES } from '../../../utils';
@@ -25,6 +26,11 @@ class OutStandingDoctor extends Component {
             });
         }
     }
+
+    handleDetailDoctor = (doctor) => {
+        // redirect
+        this.props.history.push(`/detail-doctor/${doctor.id}`);
+    };
 
     render() {
         let { settings, language } = this.props;
@@ -53,7 +59,11 @@ class OutStandingDoctor extends Component {
                                         let nameVi = `${item.positionData.valueVi}, ${item.lastName} ${item.firstName} `;
                                         let nameEn = `${item.positionData.valueEn}, ${item.lastName} ${item.firstName} `;
                                         return (
-                                            <div className="section-customize" key={index}>
+                                            <div
+                                                className="section-customize"
+                                                key={index}
+                                                onClick={() => this.handleDetailDoctor(item)}
+                                            >
                                                 <div className="custom-border">
                                                     <div className="outer-bg">
                                                         <div
@@ -93,4 +103,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(OutStandingDoctor);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(OutStandingDoctor));
