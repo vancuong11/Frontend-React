@@ -32,6 +32,22 @@
         }
     }
 
+    .schedule-doctor {
+        margin : 0 100px;
+        display: flex;
+        height : 200px;
+        border : 1px solid red;
+
+        .content-left {
+            width: 50%;
+        }
+
+        .content-right {
+            width: 50%;
+
+        }
+    }
+
     .detail-info-doctor {
         border-top      : 1px solid #f5f5f5;
         background-color: #f9f9f9;
@@ -50,4 +66,6 @@
     .comment-doctor {
         height: 50px;
     }
+
+
 }
