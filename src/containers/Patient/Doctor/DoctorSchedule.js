@@ -7,6 +7,7 @@ import { LANGUAGES } from '../../../utils';
 import './DoctorSchedule.scss';
 import { getScheduleDoctorService } from '../../../services/userService';
 import { FormattedMessage } from 'react-intl';
+import BookingModal from './Modal/BookingModal';
 
 class DoctorSchedule extends Component {
     constructor(props) {
@@ -14,6 +15,8 @@ class DoctorSchedule extends Component {
         this.state = {
             allDays: [],
             allAvailableTime: [],
+            isOpenModalBooking: false,
+            dataScheduleTimeModal: {},
         };
     }
 
@@ -89,8 +92,21 @@ class DoctorSchedule extends Component {
         }
     };
 
+    handleClickScheduleTime = (time) => {
+        this.setState({
+            isOpenModalBooking: true,
+            dataScheduleTimeModal: time,
+        });
+    };
+
+    closeBookingModal = () => {
+        this.setState({
+            isOpenModalBooking: false,
+        });
+    };
+
     render() {
-        let { allDays, allAvailableTime } = this.state;
+        let { allDays, allAvailableTime, isOpenModalBooking, dataScheduleTimeModal } = this.state;
         let { language } = this.props;
         return (
             <>
@@ -129,6 +145,7 @@ class DoctorSchedule extends Component {
                                                 <button
                                                     key={index}
                                                     className={language === LANGUAGES.VI ? 'btn-vi' : 'btn-en'}
+                                                    onClick={() => this.handleClickScheduleTime(item)}
                                                 >
                                                     {timeDisplay}
                                                 </button>
@@ -152,6 +169,11 @@ class DoctorSchedule extends Component {
                         </div>
                     </div>
                 </div>
+                <BookingModal
+                    isOpenModal={isOpenModalBooking}
+                    closeBookingModal={this.closeBookingModal}
+                    dataTime={dataScheduleTimeModal}
+                />
             </>
         );
     }
