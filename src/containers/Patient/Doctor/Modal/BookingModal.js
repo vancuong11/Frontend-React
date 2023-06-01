@@ -4,6 +4,8 @@ import { Modal } from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
 
 import './BookingModal.scss';
+import ProfileDoctor from '../ProfileDoctor';
+import _ from 'lodash';
 
 class BookingModal extends Component {
     constructor(props) {
@@ -20,6 +22,12 @@ class BookingModal extends Component {
 
     render() {
         let { isOpenModal, closeBookingModal, dataTime } = this.props;
+        let doctorId = '';
+        if (dataTime && !_.isEmpty(dataTime)) {
+            doctorId = dataTime.doctorId;
+        }
+        console.log(dataTime);
+
         return (
             <>
                 <Modal isOpen={isOpenModal} className="booking-modal-container" centered size="lg">
@@ -32,9 +40,8 @@ class BookingModal extends Component {
                         </div>
                         <div className="booking-modal-body">
                             {/* {JSON.stringify(dataTime)} */}
-
+                            <ProfileDoctor doctorId={doctorId} />
                             <div className="doctor-infor"></div>
-                            <div className="price">Giá khám: 500.000 VND</div>
                             <div className="row">
                                 <div className="col-6 form-group">
                                     <label>Họ tên</label>
