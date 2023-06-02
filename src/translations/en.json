@@ -82,6 +82,21 @@
             "payment": "The clinic has payment in the form of:",
             "hide-price": "Hide price list"
 
+        },
+        "booking-modal": {
+            "title" : "Notice of appointment of medical examination",
+            "fullName": "Full name",
+            "phoneNumber": "Phone number",
+            "email": "Email",
+            "address": "Address",
+            "reason": "Reasons for medical examination",
+            "birthday": "Date of birth",
+            "gender":"Genders",
+            "confirm": "Confirm",
+            "cancel": "Cancel",
+            "price-booking": "Free booking",
+            "price": "Price: "
+
         }
     },
     "admin": {
