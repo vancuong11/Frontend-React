@@ -8,19 +8,20 @@
     }
 
     &.section-about {
-        margin: 0 189px;
-        height: 450px;
+        margin    : 0 189px;
+        height    : 450px;
         border-top: 1px solid #878080;
 
         .section-about-header {
-            padding: 20px 0;
-            font-size: 22px;
+            padding    : 20px 0;
+            font-size  : 22px;
             font-weight: 600;
         }
 
         .section-about-content {
             display: flex;
-            gap: 15px;
+            gap    : 15px;
+
             .content-left {
                 width: 65%;
             }
@@ -29,8 +30,8 @@
                 width: 35%;
 
                 p {
-                    text-align: justify;
-                    font-style: italic;
+                    text-align : justify;
+                    font-style : italic;
                     padding-top: 15px;
                 }
             }
@@ -40,15 +41,15 @@
     .section-body {
         .section-customize {
             .bg-image {
-                width: 278px;
-                height: 150px;
+                width              : 278px;
+                height             : 150px;
                 background-position: center center;
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-color: #eee;
+                background-repeat  : no-repeat;
+                background-size    : cover;
+                background-color   : #eee;
 
                 &.section-specialty {
-                    background-image: url('../../assets/specialty/co-xuong-khop.jpg');
+                    // background-image: url('../../assets/specialty/co-xuong-khop.jpg');
                 }
 
                 &.section-medical-facility {
@@ -57,8 +58,8 @@
 
                 &.section-outstanding-doctor {
                     // background-image: url('../../assets/outstanding-doctor/103848anh-dai-dien-bs.jpg');
-                    width: 120px;
-                    height: 120px;
+                    width        : 120px;
+                    height       : 120px;
                     border-radius: 50%;
                 }
 
@@ -74,30 +75,31 @@
     height: 330px;
 
     .section-container {
-        margin: 0 189px;
-        display: flex;
+        margin        : 0 189px;
+        display       : flex;
         flex-direction: column;
 
         .section-header {
-            height: 60px;
+            height       : 60px;
             margin-bottom: 30px;
-            padding-top: 30px;
+            padding-top  : 30px;
 
             .title-section {
-                font-size: 22px;
+                font-size  : 22px;
                 font-weight: 600;
             }
 
             .btn-section {
-                float: right;
-                padding: 15px 15px;
-                border: none;
-                outline: none;
-                background: #ebebeb;
-                color: #333;
+                float         : right;
+                padding       : 15px 15px;
+                border        : none;
+                outline       : none;
+                background    : #ebebeb;
+                color         : #333;
                 text-transform: uppercase;
+
                 &:hover {
-                    color: #fff;
+                    color     : #fff;
                     background: #f7d800;
                 }
             }
@@ -107,27 +109,30 @@
 
 .section-outstanding-doctor {
     .outer-bg {
-        display: flex;
+        display        : flex;
         justify-content: center;
-        margin-bottom: 10px;
+        margin-bottom  : 10px;
     }
+
     .section-customize {
         padding: 5px;
-        cursor: pointer;
+        cursor : pointer;
+
         .custom-border {
-            border: 1px solid #878080;
+            border : 1px solid #878080;
             padding: 20px;
         }
     }
 }
 
 .home-footer {
-    display: flex;
+    display        : flex;
     justify-content: center;
-    align-items: center;
-    height: 60px;
-    width: 100%;
-    background: orange;
+    align-items    : center;
+    height         : 60px;
+    width          : 100%;
+    background     : orange;
+
     a {
         text-decoration: none;
     }
@@ -135,13 +140,13 @@
 
 // reset slick slider css
 .slick-prev {
-    left: -10px !important;
-    border: 1px solid orange;
-    z-index: 10;
-    height: 48px !important;
-    width: 44px !important;
+    left      : -10px !important;
+    border    : 1px solid orange;
+    z-index   : 10;
+    height    : 48px !important;
+    width     : 44px !important;
     background: #fff !important;
-    border: 2px solid #d7d7d7 !important;
+    border    : 2px solid #d7d7d7 !important;
 
     &:hover {
         background: #eceaea !important;
@@ -149,13 +154,13 @@
 }
 
 .slick-next {
-    right: 0px !important;
-    border: 1px solid orange;
-    z-index: 10;
-    height: 48px !important;
-    width: 44px !important;
+    right     : 0px !important;
+    border    : 1px solid orange;
+    z-index   : 10;
+    height    : 48px !important;
+    width     : 44px !important;
     background: #fff !important;
-    border: 2px solid #d7d7d7 !important;
+    border    : 2px solid #d7d7d7 !important;
 
     &:hover {
         background: #eceaea !important;
@@ -169,5 +174,5 @@
 .slick-prev::before,
 .slick-next::before {
     font-family: 'Glyphicons Halflings' !important;
-    color: red !important;
+    color      : red !important;
 }
