@@ -178,7 +178,13 @@ class BookingModal extends Component {
                         </div>
                         <div className="booking-modal-body">
                             {/* {JSON.stringify(dataTime)} */}
-                            <ProfileDoctor doctorId={doctorId} isShowDescriptionDoctor={false} dataTime={dataTime} />
+                            <ProfileDoctor
+                                doctorId={doctorId}
+                                isShowDescriptionDoctor={false}
+                                dataTime={dataTime}
+                                isShowLinkDetail={false}
+                                isShowPrice={true}
+                            />
                             <div className="doctor-infor"></div>
                             <div className="row">
                                 <div className="col-6 form-group">
